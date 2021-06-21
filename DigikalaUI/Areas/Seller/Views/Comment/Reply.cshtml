@@ -1,0 +1,21 @@
+﻿@model DigikalaDataAccess.Entity.Comment
+
+@{
+    ViewData["Title"] = "Reply";
+}
+
+<h2>Reply</h2>
+<form asp-action="Reply" asp-controller="Comment" method="post">
+
+    @*<div asp-validation-summary="All"></div>*@
+    <input type="hidden" asp-for="CommentID" value="@Model.CommentID" />
+    <div class="form-group">
+        <label asp-for="CommentResponse"></label>
+        <input asp-for="CommentResponse" class="form-control" />
+        <span asp-validation-for="CommentResponse"></span>
+    </div>
+
+
+    <input type="submit" class="btn btn-primary btn-lg" value="Reply" />
+</form>
+

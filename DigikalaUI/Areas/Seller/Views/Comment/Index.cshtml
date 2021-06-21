@@ -1,0 +1,38 @@
+﻿@model List<DigikalaDataAccess.Entity.Comment>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@{
+    var counter = 1;
+}
+
+
+<a asp-action="Create" asp-controller="Comment" class="btn btn-primary">Create</a>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>UserName</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Response</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@counter</td>
+            <td>@item.UserName</td>
+            <td>@item.CommentHead</td>
+            <td>@item.CommentBody</td>
+            <td>@item.CommentResponse</td>
+        </tr>
+
+        counter++;
+    }
+</table>
+

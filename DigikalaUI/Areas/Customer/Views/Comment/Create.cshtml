@@ -1,0 +1,24 @@
+﻿@model DigikalaDataAccess.Entity.Comment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" asp-controller="Comment" method="post">
+
+    @*<div asp-validation-summary="All"></div>*@
+    <div class="form-group">
+        <label asp-for="CommentHead"></label>
+        <input asp-for="CommentHead" class="form-control" />
+        <span asp-validation-for="CommentHead"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CommentBody"></label>
+        <input asp-for="CommentBody" class="form-control" />
+        <span asp-validation-for="CommentBody"></span>
+    </div>
+
+    <input type="submit" class="btn btn-primary btn-lg" value="Create" />
+</form>

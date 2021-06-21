@@ -1,0 +1,132 @@
+﻿@model DigikalaDataAccess.User
+
+@{
+    ViewData["Title"] = "دیجی کالا";
+}
+
+<style>
+    .box {
+        position: relative;
+        left: 25%;
+        top: 25%;
+        transform: translate(-30%, 75%);
+    }
+
+    .box2 {
+        position: relative;
+        left: 20%;
+        top: 20%;
+        transform: translate(-25%, 1000%);
+    }
+
+    .text1 {
+        font-size: 1.43rem;
+        line-height: 50px;
+        margin: 10px;
+        font-weight: 700;
+    }
+
+    .button1 {
+        background-color: #57cfb1;
+        width: 205px;
+        height: 50px;
+        border-radius: 7.5px;
+    }
+
+    .text2 {
+        color: #57cfb1;
+    }
+
+    .input1 {
+        padding: 15px;
+        border-radius: 7.5px;
+    }
+
+    a {
+        text-decoration: none;
+        color: gray;
+    }
+</style>
+
+<div class="col-lg-4 col-sm-12 float-right pt-sm-3 pt-lg-5">
+    <div class="row justify-content-center p-3">
+        <img src="https://seller.digikala.com/static/files/9eb66c4d.svg" alt="Logo" />
+    </div>
+
+    <div class="row justify-content-center p-2">
+        <p class="text1">
+            !به مرکز فروشندگان دیجی‌کالا
+            خوش آمدید
+        </p>
+    </div>
+</div>
+
+<div class="row d-none">
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form asp-action="login" asp-controller="Authentication" asp-area="seller" method="post">
+            <div class="form-group input-group">
+                <input asp-for="UserName" class="input1 form-control text-right border-right-0" placeholder="نام كاربري خود را وارد کنید" />
+                <div class="input-group-append">
+                    <span class="input-group-text text-secondary bg-white border-left-0"><i class="fas fa-user"></i></span>
+                </div>
+            </div>
+            <span asp-validation-for="UserName" class="text-danger mt-1 mb-1"></span>
+            <div class="form-group input-group mt-2">
+                <input type="password" asp-for="UserPassword" class="input1 form-control text-right border-right-0" placeholder="کلمه عبور خود را وارد کنید" />
+                <div class="input-group-append">
+                    <span class="input-group-text text-secondary bg-white border-left-0"><i class="fas fa-lock"></i></span>
+                </div>
+            </div>
+            <span asp-validation-for="UserPassword" class="text-danger mt-1"></span>
+            <div class="row m-auto d-flex justify-content-center">
+                <input type="submit" class="text-white btn button1 pr-5 pl-5 pt-1 pb-1 mt-3 mb-3" value="ورود" />
+            </div>
+        </form>
+        <p class="text-center font-weight-light">
+            <a class="text2 border-bottom text-decoration-none" asp-action="Forgotpassword" asp-controller="Authentication" asp-area="seller">رمز عبورم را فراموش کرده ام.</a>
+        </p>
+        <p class="text-secondary text-center">
+            هنوز ثبت نام نکرده اید؟
+            <a class="text2 border-bottom text-decoration-none" asp-action="Register" asp-controller="Authentication" asp-area="seller">همین حالا ثبت نام کنید</a>
+        </p>
+        <div class="row text-center text2 mt-lg-5">
+            <nav class="navbar-expand m-auto">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item mr-lg-3 ml-lg-3 mr-sm-0 ml-sm-0">
+                        <a class="nav-link" href="#">
+                            مراحل ثبت نام
+                        </a>
+                    </li>
+                    <li class="nav-item mr-lg-3 ml-lg-3 mr-sm-0 ml-sm-0">
+                        <a class="nav-link" href="#">
+                            سوالات متداول
+                        </a>
+                    </li>
+                    <li class="nav-item mr-lg-3 ml-lg-3 mr-sm-0 ml-sm-0">
+                        <a class="nav-link" href="#">
+                            مرکز آموزش فروشندگان
+                        </a>
+                    </li>
+                    <li class="nav-item mr-lg-3 ml-lg-3 mr-sm-0 ml-sm-0">
+                        <a class="nav-link" href="#">
+                            فروشگاه اینترنتی دیجی کالا
+                        </a>
+                    </li>
+                    <li class="nav-item mr-lg-3 ml-lg-3 mr-sm-0 ml-sm-0">
+                        <a class="nav-link" href="#">
+                            ثبت رسید سفارش
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-sm-12 float-lg-right d-flex justify-content-center align-self-sm-center">
+    <img src="https://seller.digikala.com/static/files/ccb24d55.svg" alt="Seller Center" />
+</div>

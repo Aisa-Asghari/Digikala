@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/favicon.png" type="image/x-icon" />
+    <link href="~/bootstrap-v4-rtl/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css " rel="stylesheet" type="text/css" />
+    @*@section*@
+    <style>
+        * {
+            font-family: 'B Yekan','Yu Gothic UI';
+        }
+    </style>
+</head>
+<body class="rtl text-right">
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/bootstrap-v4-rtl/js/bootstrap.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

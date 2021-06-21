@@ -1,0 +1,1138 @@
+﻿
+@{
+    ViewData["Title"] = "فروشگاه اينترنتي ديجي كالا";
+}
+
+<style>
+    .shadow {
+        box-shadow: 0 5px 5px 0 #ededed, 0 5px 5px 0 #ededed;
+        border-radius: 15px;
+    }
+
+    .txt {
+        font-size: 14px;
+    }
+
+    .photos img {
+        position: absolute;
+        left: 0;
+        border-radius: 10px;
+        max-width: 100%;
+        opacity: 0;
+        transition: opacity .6s ease-in;
+    }
+
+    .photos .showed {
+        opacity: 1;
+    }
+
+    .controls button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 5rem;
+        line-height: 22.5rem;
+        transition: background-color 0.5s linear;
+        box-sizing:border-box;
+    }
+
+    .enter a:hover{
+        color:gray;
+    }
+</style>
+
+<div class="row bg-light d-sm-none d-lg-block">
+    <img class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/dee13af17fcbecd33e3da2a326612a731f7e2b52_1623954093.gif" />
+</div>
+
+<div class="row bg-white p-lg-2 p-sm-0">
+    <div class="col-lg-2 col-sm-4 p-1 m-2 text-secondary enter">
+        <i class="fas fa-shopping-cart border-right border-dark p-2"></i>
+        <a class="btn bg-white btn-outline-secondary p-2 ml-2" asp-action="Login" asp-controller="Authentication">
+            <i class="fa fa-user"></i>
+            ورود به حساب کاربری
+        </a>
+    </div>
+    <div class="col-lg-9 col-sm-7">
+        <div class="input-group m-2">
+            <input class="form-control bg-light border-0 p-4 text-right text-secondary" type="search" placeholder="جستجو در دیجی کالا ..." aria-label="Search" />
+            <div class="input-group-append">
+                <span class="input-group-text bg-light border-0 text-secondary"><i class="fas fa-search"></i></span>
+            </div>
+            <a class="navbar-brand ml-sm-2 ml-lg-4 mt-2" href="#">
+                <img src="https://www.digikala.com/static/files/bc60cf05.svg" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row p-lg-2 p-sm-0 bg-white m-auto txt">
+    <nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-white m-auto">
+        <ul class="navbar-nav m-auto">
+            <li class="nav-item mr-lg-5 pr-lg-5 mr-sm-5 pr-sm-5">
+                <a class="nav-link" href="#">
+                    لطفا شهر و استان خود را انتخاب کنید
+                </a>
+            </li>
+            <li class="nav-item mr-lg-3 ml-lg-3 mr-sm-0 ml-sm-0">
+                <a class="nav-link" asp-action="Register" asp-controller="Authentication" asp-area="Seller">
+                    فروشنده شوید
+                </a>
+            </li>
+            <li class="nav-item mr-lg-3 ml-lg-3 d-sm-none d-lg-block">
+                <a class="nav-link" href="#">
+                    سوالی دارید
+                </a>
+            </li>
+            <li class="nav-item mr-lg-3 ml-lg-3 d-sm-none d-lg-block">
+                <a class="nav-link" href="#">
+                    دیجی کلاب
+                </a>
+            </li>
+            <li class="nav-item mr-lg-3 ml-lg-3 d-sm-none d-lg-block">
+                <a class="nav-link" href="#">
+                    دیجی پلاس
+                </a>
+            </li>
+            <li class="nav-item mr-lg-3 ml-lg-3 d-sm-none d-lg-block">
+                <a class="nav-link" href="#">
+                    دیجی کالای من
+                </a>
+            </li>
+            <li class="nav-item mr-lg-3 ml-lg-3 d-sm-none d-lg-block">
+                <a class="nav-link" href="#">
+                    تخفیف ها و پیشنهاد ها
+                </a>
+            </li>
+            <li class="nav-item mr-lg-3 ml-lg-3 d-sm-none d-lg-block">
+                <a class="nav-link" href="#">
+                    سوپر مارکت
+                </a>
+            </li>
+            <li class="nav-item font-weight-bolder border-left">
+                <a class="nav-link" href="#">
+                    دسته بندی کالا ها
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container-fluid p-5 bg-light">
+    <div class="row mb-3">
+        <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/d49187af1b8db0c87cfb51c43d7ea08e7ead81da_1623670140.jpg" />
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 m-auto">
+            <div class="row">
+                <img class="img img-fluid shadow mb-5" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/ff9eb453354096795f2524fed2bfc9770d230fd4_1613164963.gif">
+            </div>
+            <div class="row">
+                <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/c3904c21e8a3ab13e1beaf014254bf6a6933f3b3_1624041558.jpg">
+            </div>
+        </div>
+        <div class="col-lg-7 col-sm-12 mt-sm-5">
+            <div id="gallery d-flex justify-content-center">
+                <div class="photos ">
+                    <img class="img img-fluid shadow showed" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/0a8f1f4c08feeed721f3add4ad6447445264fac3_1623043467.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/162b06b25d9d61d063f4c82cd02328a6712a30ca_1623953457.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/ee8d869be1be2d4f8b4fd779728100fe8ca68f46_1624080948.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/89fa1ea3a06ab6095affc36665bd665512a40e8b_1624027183.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/bb55edd7bddffc7978476b77da05510cf0b0dba4_1623143328.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/3292dc43aa6df1143292145c26dbf59282d21914_1622033545.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/3292dc43aa6df1143292145c26dbf59282d21914_1622033545.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/cd7c5dbd93f1934bd6bab2b7582193498b688cd4_1623412508.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/290ccbb25f0a21210a69ac269d01404da11ed64d_1624124708.jpg" />
+                    <div class="controls row d-flex justify-content-center p-0">
+                        <button type="button" class="col-6 font-weight-bolder prev text-left text-white p-0"><</button>
+                        <button type="button" class="col-6 font-weight-bolder next text-right text-white p-0">></button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row p-5 mb-5 mt-5 text-center" style="background-color:#ef394e">
+    <div class="card-deck">
+        <div class="card bg-transparent border-0">
+            <img src="~/img/c.png" class="card-img-top" style="border-radius:5px;" />
+            <div class="card-footer bg-transparent border-0">
+                <a class="btn btn-outline-light bg-transparent mt-2">مشاهده همه ></a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/img/c1.png" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">ژل افتر شیو کامان</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">52.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">33%</span>
+                </a>
+                <h5 class="card-text">34.900 تومان</h5>
+            </div>
+            <div class="card-footer">
+                <small class="card-text">5:10:20</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/img/c2.png" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">گردنبند طلا 18 عیار زنانه ریسه گالری</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">559.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">38%</span>
+                </a>
+                <h5 class="card-text">349.000 تومان</h5>
+            </div>
+            <div class="card-footer">
+                <small class="card-text">5:10:20</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/img/c3.png" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">اندروید باکس ایکس 96 ایر</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">999.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">9%</span>
+                </a>
+                <h5 class="card-text">908.000 تومان</h5>
+            </div>
+            <div class="card-footer">
+                <small class="card-text">5:10:20</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/img/c4.png" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">خوشبوکننده خودرو آرنا</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">53.500 تومان</del>
+                    <span class="badge badge-danger badge-pill">27%</span>
+                </a>
+                <h5 class="card-text">39.000 تومان</h5>
+            </div>
+            <div class="card-footer">
+                <small class="card-text">5:10:20</small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-transparent mr-5 ml-5">
+    <div class="col-3">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/4d63d2f3a2d3580ff9b7250614a63948c4998192_1615731689.gif">
+            </a>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/1367f5ce8bec4589c3cf3619fbe1479eabf085da_1615977227.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/8132f41570114115539414c0ee16cf27cb052a25_1615806954.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkms.digikala.com/static/files/3ea4f643.jpg">
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row p-5 mt-5 mb-5 text-center" style="background-color:#6bb927">
+    <div class="card-deck">
+        <div class="card bg-transparent border-0" style="border-radius:5px;">
+            <img src="~/img/d.png" class="card-img-top" />
+            <div class="card-footer bg-transparent border-0">
+                <a class="btn btn-outline-light bg-transparent mt-2">مشاهده همه ></a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/img/d1.png" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">مایع دستشویی داو</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">43.500 تومان</del>
+                    <span class="badge badge-danger badge-pill">15%</span>
+                </a>
+                <h5 class="card-text">37.700 تومان</h5>
+            </div>
+            <div class="card-footer">
+                <small class="card-text">4:20:40</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/img/d2.png" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">دستمال کاغذی 150 برگ بی تا</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">32.100 تومان</del>
+                    <span class="badge badge-danger badge-pill">25%</span>
+                </a>
+                <h5 class="card-text">24.000 تومان</h5>
+            </div>
+            <div class="card-footer">
+                <small class="card-text">4:20:40</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/img/d3.png" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">مایع لباسشویی پرسیل</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">88.725 تومان</del>
+                    <span class="badge badge-danger badge-pill">22%</span>
+                </a>
+                <h5 class="card-text">68.900 تومان</h5>
+            </div>
+            <div class="card-footer">
+                <small class="card-text">4:20:40</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/img/d4.png" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">مایع سفید کننده غلیظ سطوح دامستوس</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">23.500 تومان</del>
+                    <span class="badge badge-danger badge-pill">22%</span>
+                </a>
+                <h5 class="card-text">17.900 تومان</h5>
+            </div>
+            <div class="card-footer">
+                <small class="card-text">4:20:40</small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mt-2 mb-0 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">گوشی موبایل</h5>
+</div>
+<div class="row ml-5 mr-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/6207b3bf015d7fff97e9e04868497ac6a30474a3_1609308062.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy A12</h6>
+                <h6 class="card-text">4.420.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/121560275.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy A31</h6>
+                <h6 class="card-text">5.849.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/120415904.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy A71</h6>
+                <h6 class="card-text">10.139.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/89e7f2abac447a018242a954f03f8a6926344f8b_1594023235.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy A21s</h6>
+                <h6 class="card-text">4.899.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/be7a0e9bf7866759fa3cea7648b149f589a01040_1607433995.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Iphone 12 pro max</h6>
+                <h6 class="card-text">43.500.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0 p-1">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/62c8a2c6d57dce6efbde8bbd348490c2f10a55e1_1611742799.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy s21 ultra</h6>
+                <h6 class="card-text">30.399.000 تومان</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mt-5 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">کیف و کاور گوشی</h5>
+</div>
+<div class="row mr-5 ml-5 mb-5 mt-0 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/120406774.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Iphone 6</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">40.500 تومان</del>
+                    <span class="badge badge-danger badge-pill">27%</span>
+                </a>
+                <h5 class="card-text">29.500 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/113805332.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Iphone 6 plus</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">99.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">54%</span>
+                </a>
+                <h5 class="card-text">45.500 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/3850187.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Iphone 7 plus</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">37.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">20%</span>
+                </a>
+                <h5 class="card-text">29.500 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/120406504.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Iphone 7</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">33.500 تومان</del>
+                    <span class="badge badge-danger badge-pill">15%</span>
+                </a>
+                <h5 class="card-text">28.500 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/93f753e1d92f44ae0de00e325f501638e469204b_1600085896.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Galaxy</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">128.500 تومان</del>
+                    <span class="badge badge-danger badge-pill">7%</span>
+                </a>
+                <h5 class="card-text">119.00 تومان</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-transparent mb-2 mt-2 mr-5 ml-5 p-2">
+    <div class="col-3">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/76998daf25428efd1a62130b631abfe65b2ceea8_1612288934.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/bc928cad36c9cc9aed866ec4de30dfd9f5e50ec7_1607016116.jpg">
+            </a>
+        </div>
+    </div><div class="col-3">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/956cd52f1f18f11284016c86561d53bcdcfdeedd_1612606849.jpg">
+            </a>
+        </div>
+    </div><div class="col-3">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/4733b740d15e74f00d50ac92fb126911632b8053_1599385682.jpg">
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mt-5 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">هدفون، هدست و هندزفری</h5>
+</div>
+<div class="row mt-0 ml-5 mr-5 mb-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/ae6e6c3a785c79e9a1df986413dba2aff12bd3c3_1614605275.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">RT-A82</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">129.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">62%</span>
+                </a>
+                <h5 class="card-text">49.500 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/753aef571ed4dfd67ad91634e72c536bfb5d7d0d_1614674342.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">RT-A61</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">129.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">62%</span>
+                </a>
+                <h5 class="card-text">49.500 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/d7f298ec3aa3f1633e5058fb0d4ec3a191e68ac6_1614674249.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">108</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">129.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">62%</span>
+                </a>
+                <h5 class="card-text">49.500 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/62b5ba4ba3d9139efda23227472a21ee6b519db7_1614580855.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">SE01</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">110.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">53%</span>
+                </a>
+                <h5 class="card-text">51.500 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/97a84b4314804615e98c30700f6139c9498658d4_1614580715.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">8423</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">130.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">50%</span>
+                </a>
+                <h5 class="card-text">64.500 تومان</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mt-2 mb-0 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">کتاب چاپی</h5>
+</div>
+<div class="row mt-0 ml-5 mr-5 mb-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/5610990e57ea52bc6782b0c2841b29d60ff7aa09_1598339811.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">بیشعوری</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">36.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">57%</span>
+                </a>
+                <h5 class="card-text">15.480 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/113805332.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">خودت را به فنا نده</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">20.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">40%</span>
+                </a>
+                <h5 class="card-text">12.000 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/d1c197171450de6aecb2a12f77fd734e7ca965ee_1602768931.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">چهار اثر از فلورانس اسکاول شین</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">60.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">67%</span>
+                </a>
+                <h5 class="card-text">19.800 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/e06538f329b1ebfdef0e0fcdd5e26556e0c3d927_1602002189.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">قلعه حیوانات</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">26.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">50%</span>
+                </a>
+                <h5 class="card-text">12.900 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/e685a41cb1cec4f00193063e6bc76cf584d9783e_1598338653.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">راز</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">40.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">55%</span>
+                </a>
+                <h5 class="card-text">18.000 تومان</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-transparent m-5 p-2">
+    <div class="col-6">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/ab7538b5c9e497a16ac19a650621ffed967e5cce_1615904956.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card border-0">
+            <a>
+                <img style="border-radius:15px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);" class="img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/8efcf8d1dd4eb498a5b5ff4a6bfac3041fd30cce_1616277977.jpg">
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mt-2 mb-0 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">ساعت هوشمند</h5>
+</div>
+<div class="row mb-2 ml-5 mr-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/114651235.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">MW01</h6>
+                <h6 class="card-text">235.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/112556303.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy Watch</h6>
+                <h6 class="card-text">5.220.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/121856543.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Solar</h6>
+                <h6 class="card-text">690.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/119677615.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">W34</h6>
+                <h6 class="card-text">390.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/7a23d6186c45d00c86be74fa8fbfc1b10a0b93a4_1606987163.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Watch Fit</h6>
+                <h6 class="card-text">2.199.000 تومان</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mr-5 ml-5 mt-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">کفش ورزشی مردانه</h5>
+</div>
+<div class="row mt-0 ml-5 mr-5 mb-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/119128346.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">کفش راحتی مردانه</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">384.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">64%</span>
+                </a>
+                <h5 class="card-text">139.000 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/115360869.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">کفش کوهنوردی مردانه</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">170.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">12%</span>
+                </a>
+                <h5 class="card-text">150.000 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/119148904.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">کفش راحتی مردانه</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">225.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">25%</span>
+                </a>
+                <h5 class="card-text">169.000 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/f2a4befad2cacaf3fad2fbcea604069a5007e5a6_1606658894.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">کفش راحتی چابک</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">148.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">6%</span>
+                </a>
+                <h5 class="card-text">139.000 تومان</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mb-0 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">محصولات پربازدید اخیر</h5>
+</div>
+<div class="row ml-5 mr-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/219163a48b85831190b1aa4983a71565a19434c2_1609659342.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Poco M3</h6>
+                <h6 class="card-text">5.399.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/6207b3bf015d7fff97e9e04868497ac6a30474a3_1609308062.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy A12</h6>
+                <h6 class="card-text">4.420.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/121560275.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy A31</h6>
+                <h6 class="card-text">5.849.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/120415904.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Galaxy A71</h6>
+                <h6 class="card-text">10.480.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/8d653fb306b66fa88c7e257822765f914afeccd8_1612776072.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">Redmi Note 9t</h6>
+                <h6 class="card-text">6.669.000 تومان</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mt-5 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">منتخب جدیدترین کالاها</h5>
+</div>
+<div class="row mt-0 ml-5 mr-5 mb-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/0a7b3c9dd306ce8c3556207358571cfdb7f43990_1614964918.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">کلاه کپ پسرانه</h6>
+                <h6 class="card-text">75.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/1d9182f846e13aecb162c14b77d2c6882c2cced2_1614963648.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">روسری زنانه</h6>
+                <h6 class="card-text">117.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/89bdc93417892125c871b240ee9094c98f9a6db8_1614962941.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">کلاه کپ پسرانه</h6>
+                <h6 class="card-text">75.000 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/b83ede9d7402d9c4822415c1a1c048da5416fb04_1614968798.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">کیف کلاسوری</h6>
+                <h6 class="card-text">24.500 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/be82b479bfa13bac268f03a0a87302e6c901ba09_1614968115.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">ادوپرفیوم زنانه روونا</h6>
+                <h6 class="card-text">260.000 تومان</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-white mt-2 mb-0 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">محصولات پرفروش اخیر</h5>
+</div>
+<div class="row mb-2 ml-5 mr-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/8466ef4c6363a8ef19b41ff43813b2bfc8eec17f_1605071646.jpg?x-oss-process=image/resize,m_lfit,h_350,w_350/quality,q_60" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">ماسک تنفسی</h6>
+                <h6 class="card-text">24.080 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/0f102c9d692ced65638b8da35c1cb926db1b7fc9_1611288685.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">ماسک تنفسی</h6>
+                <h6 class="card-text">33.290 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public-2.digikala.com/digikala-products/110490415.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">هندزفری بلوتوث</h6>
+                <h6 class="card-text">38.500 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/b6a4d85c543c946e0b00253e2a588a35d1f35e20_1612428429.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">ماسک تنفسی</h6>
+                <h6 class="card-text">24.500 تومان</h6>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/119262130.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h6 class="card-title">کلاه کپ</h6>
+                <h6 class="card-text">39.000 تومان</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-white ml-5 mr-5 mt-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">برندهای ویژه</h5>
+</div>
+<div class="row mt-0 ml-5 mr-5 mb-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/1000018250.jpg" class="card-img-top" />
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/2315.png" class="card-img-top" />
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/1000022549.png" class="card-img-top" />
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/87ada564f2e522450088addb262eac0944677343_1596466790.jpg" class="card-img-top" />
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-adservice-banners/19b71eef2e7e8d0765a81e6e33b12b3640bbd990_1596466061.png" class="card-img-top" />
+        </div>
+    </div>
+</div>
+<div class="row bg-white mb-0 ml-5 mr-5 p-2 border-bottom border-danger" style="border-top-right-radius:10px;border-top-left-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <h5 class="mr-5 mt-2 card-title">منتخب محصولات تخفیف و حراج</h5>
+</div>
+<div class="row mb-5 ml-5 mr-5 p-2 justify-content-center text-center bg-white" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;box-shadow: 0 5px 5px 0 rgb(128, 128, 128), 0 5px 5px 0 rgb(128, 128, 128);">
+    <div class="card-deck p-1">
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/472f9fbcfe7b358b695dab0fae2fc7380d622d10_1595368149.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">کوله پشتی کوهنوردی</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">415.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">52%</span>
+                </a>
+                <h5 class="card-text">199.000 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/a87ed537600871bd682b75c6676f1adbb7f9f5b5_1599486236.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">دفتر برنامه ریزی</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">38.000 تومان</del>
+                    <span class="badge badge-danger badge-pill">8%</span>
+                </a>
+                <h5 class="card-text">34.900 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/eccd74a117c0505ad7fa92caf8022204581b9800_1610211966.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">استند بادکنک گل</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">3.700 تومان</del>
+                    <span class="badge badge-danger badge-pill">46%</span>
+                </a>
+                <h5 class="card-text">1.990 تومان</h5>
+            </div>
+        </div>
+        <div class="card border-0">
+            <img src="https://dkstatics-public.digikala.com/digikala-products/114062863.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">ماژیک وایت برد</h5>
+                <a class="btn bg-transparent border-0">
+                    <del class="text-secondary">12.800 تومان</del>
+                    <span class="badge badge-danger badge-pill">8%</span>
+                </a>
+                <h5 class="card-text">11.800 تومان</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="justify-content-center mt-5 row p-2 border-top border-light">
+    <h5>برگشت به بالا</h5>
+</div>
+<div class="justify-content-center row pb-1 pt-5 pl-5 pr-5 border-top border-ligh" style="background-color:#eceff1">
+    <div class="col-2 ml-4"><img class="img-fluid" src="https://www.digikala.com/static/files/8f570b58.svg" /></div>
+    <div class="col-2 ml-4 mr-4"><img class="img-fluid" src="https://www.digikala.com/static/files/a9286d2f.svg" /></div>
+    <div class="col-2 ml-4 mr-4"><img class="img-fluid" src="https://www.digikala.com/static/files/22414818.svg" /></div>
+    <div class="col-2 ml-4 mr-4"><img class="img-fluid" src="https://www.digikala.com/static/files/514926b1.svg" /></div>
+    <div class="col-2 mr-4"><img class="img-fluid" src="https://www.digikala.com/static/files/fdb293e6.svg" /></div>
+</div>
+<div class="justify-content-center row pt-1 pr-5 pl-5" style="background-color:#eceff1">
+    <div class="col-2 ml-4"><h6>تحویل اکسپرس</h6></div>
+    <div class="col-2 ml-4 mr-4"><h6>پشتیبانی ۲۴ ساعته</h6></div>
+    <div class="col-2 ml-4 mr-4"><h6>پرداخت در محل</h6></div>
+    <div class="col-2 ml-4 mr-4"><h6>۷ روز ضمانت بازگشت</h6></div>
+    <div class="col-2 mr-4"><h6>ضمانت اصل‌بودن کالا</h6></div>
+</div>
+<hr class="m-0 pl-5 pr-5 pt-0 pb-0" />
+<div class="justify-content-center row pb-1 pt-5 text-center" style="background-color:#eceff1">
+    <div class="col-2"><h5>راهنمای خرید از دیجی کالا</h5><h6>نحوه ثبت سفارش</h6><h6>رویه ارسال سفارش</h6><h6>شیوه های پرداخت</h6></div>
+    <div class="col-2"><h5>خدمات مشتريان</h5><h6>پاسخ به پرسش هاي متداول</h6><h6>رویه های بازگرداندن کالا</h6><h6>شرایط استفاده</h6><h6>حریم خصوصی</h6><h6>گزارش باگ</h6></div>
+    <div class="col-2"><h5>با دیجی کالا</h5><h6>اتاق خبر دیجی کالا</h6><h6>فروش در دیجی کالا</h6><h6>فرصت های شغلی</h6><h6>تماس با دیجی کالا</h6><h6>درباره دیجی کالا</h6><h6>راهنمای هویت بصری</h6></div>
+    <div class="col-4">
+        <div class="row">
+            <h5>
+                از تخفیف‌ها و جدیدترین‌های دیجی‌کالا باخبر شوید:
+            </h5>
+        </div>
+        <div class="input-group mt-3 mb-3">
+            <input type="text" class="form-control w-25" placeholder="آدرس ایمیل خود را وارد کنید" aria-label="" aria-describedby="basic-addon1" style="border-top-right-radius:10px;border-bottom-right-radius:10px">
+            <div class="input-group-prepend">
+                <button class="btn btn-primary" type="button" style="border-top-left-radius:10px;border-bottom-left-radius:10px">ارسال</button>
+            </div>
+        </div>
+        <div class="row">
+            <h5>دیجی‌کالا را در شبکه‌های اجتماعی دنبال کنید:</h5>
+        </div>
+        <div class="row" style="font-size:25px">
+            <i class="m-2 fab fa-linkedin-in"></i>
+            <i class="m-2 fab fa-youtube"></i>
+            <i class="m-2 fab fa-twitter"></i>
+            <i class="m-2 fab fa-instagram"></i>
+        </div>
+    </div>
+</div>
+<hr class="m-0 pl-5 pr-5 pt-0 pb-0" />
+<div class="justify-content-center row pt-2 pb-1 pr-5 pl-5" style="background-color:#eceff1">
+    <h6>
+        هفت روز هفته ، ۲۴ ساعت شبانه‌روز پاسخگوی شما هستیم
+        شماره تماس :
+        ۶۱۹۳۰۰۰۰ - ۰۲۱
+        آدرس ایمیل :
+        info@digikala.com
+    </h6>
+</div>
+<div class="justify-content-center row pt-1 pl-5 pr-5 pb-2" style="background-color:#eceff1">
+    <div class="col-1"><img class="img-fluid" src="https://www.digikala.com/static/files/dd753f51.png" /></div>
+    <div class="col-1"><img class="img-fluid" src="https://www.digikala.com/static/files/f822b108.svg" /></div>
+    <div class="col-1"><img class="img-fluid" src="https://www.digikala.com/static/files/692fd5db.svg" /></div>
+    <div class="col-1"><img class="img-fluid" src="https://www.digikala.com/static/files/c4abfc14.png" /></div>
+</div>
+<div class="justify-content-center row pt-2 pb-2 pr-5 pl-5" style="background-color:#d7dee0">
+    <div class="col-8">
+        <div class="row">
+            <h5 class="float-right">فروشگاه اینترنتی دیجی‌کالا، بررسی، انتخاب و خرید آنلاین</h5>
+        </div>
+        <div class="row"><h6>اسباب بازی   عطر و ادوکلن    تلویزیون    رنگ مو و ابرو   مانتو   لوازم جانبی ماسک تنفسی</h6></div>
+    </div>
+    <div class="col-1 bg-white m-1 p-1">
+        <img class="img-fluid" src="https://www.digikala.com/static/files/1e5dab5a.png" />
+    </div>
+    <div class="col-1 bg-white m-1 p-1">
+        <img class="img-fluid" src="https://www.digikala.com/static/files/1e5dab5a.png" />
+    </div>
+    <div class="col-1 bg-white m-1 p-1">
+        <img class="img-fluid" src="https://www.digikala.com/static/files/1e5dab5a.png" />
+    </div>
+</div>
+<div class="justify-content-center row pt-2 pb-1" style="background-color:#d7dee0">
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/0ef4e56b.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/a2f19563.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/6b24b899.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/c8cfebe7.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/9ea6b446.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/0feb6326.svg" /></div>
+</div>
+<div class="justify-content-center row pt-2 pb-1 pr-5 pl-5" style="background-color:#d7dee0">
+    <h6>
+        استفاده از مطالب فروشگاه اینترنتی دیجی‌کالا فقط برای مقاصد غیرتجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین دیجی‌کالا) می‌باشد.
+    </h6>
+</div>
+<div class="justify-content-center mt-5 row p-2 border-top border-light">
+    <h5>برگشت به بالا</h5>
+</div>
+<div class="justify-content-center row pb-1 pt-5 pl-5 pr-5 border-top border-ligh" style="background-color:#eceff1">
+    <div class="col-2 ml-4"><img class="img-fluid" src="https://www.digikala.com/static/files/8f570b58.svg" /></div>
+    <div class="col-2 ml-4 mr-4"><img class="img-fluid" src="https://www.digikala.com/static/files/a9286d2f.svg" /></div>
+    <div class="col-2 ml-4 mr-4"><img class="img-fluid" src="https://www.digikala.com/static/files/22414818.svg" /></div>
+    <div class="col-2 ml-4 mr-4"><img class="img-fluid" src="https://www.digikala.com/static/files/514926b1.svg" /></div>
+    <div class="col-2 mr-4"><img class="img-fluid" src="https://www.digikala.com/static/files/fdb293e6.svg" /></div>
+</div>
+<div class="justify-content-center row pt-1 pr-5 pl-5" style="background-color:#eceff1">
+    <div class="col-2 ml-4"><h6>تحویل اکسپرس</h6></div>
+    <div class="col-2 ml-4 mr-4"><h6>پشتیبانی ۲۴ ساعته</h6></div>
+    <div class="col-2 ml-4 mr-4"><h6>پرداخت در محل</h6></div>
+    <div class="col-2 ml-4 mr-4"><h6>۷ روز ضمانت بازگشت</h6></div>
+    <div class="col-2 mr-4"><h6>ضمانت اصل‌بودن کالا</h6></div>
+</div>
+<hr class="m-0 pl-5 pr-5 pt-0 pb-0" />
+<div class="justify-content-center row pb-1 pt-5 text-center" style="background-color:#eceff1">
+    <div class="col-2"><h5>راهنمای خرید از دیجی کالا</h5><h6>نحوه ثبت سفارش</h6><h6>رویه ارسال سفارش</h6><h6>شیوه های پرداخت</h6></div>
+    <div class="col-2"><h5>خدمات مشتريان</h5><h6>پاسخ به پرسش هاي متداول</h6><h6>رویه های بازگرداندن کالا</h6><h6>شرایط استفاده</h6><h6>حریم خصوصی</h6><h6>گزارش باگ</h6></div>
+    <div class="col-2"><h5>با دیجی کالا</h5><h6>اتاق خبر دیجی کالا</h6><h6>فروش در دیجی کالا</h6><h6>فرصت های شغلی</h6><h6>تماس با دیجی کالا</h6><h6>درباره دیجی کالا</h6><h6>راهنمای هویت بصری</h6></div>
+    <div class="col-5">
+        <div class="row">
+            <h5>
+                از تخفیف‌ها و جدیدترین‌های دیجی‌کالا باخبر شوید:
+            </h5>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="آدرس ایمیل خود را وارد کنید" aria-label="" aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+                <button class="btn btn-primary" type="button">ارسال</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <h6>دیجی‌کالا را در شبکه‌های اجتماعی دنبال کنید:</h6>
+        </div>
+        <div class="row" style="font-size:14px">
+            <i class="m-2 fab fa-linkedin-in"></i>
+            <i class="m-2 fab fa-youtube"></i>
+            <i class="m-2 fab fa-twitter"></i>
+            <i class="m-2 fab fa-instagram"></i>
+        </div>
+    </div>
+</div>
+<hr class="m-0 pl-5 pr-5 pt-0 pb-0" />
+<div class="justify-content-center row pt-2 pb-1 pr-5 pl-5" style="background-color:#eceff1">
+    <h6>
+        هفت روز هفته ، ۲۴ ساعت شبانه‌روز پاسخگوی شما هستیم
+        شماره تماس :
+        ۶۱۹۳۰۰۰۰ - ۰۲۱
+        آدرس ایمیل :
+        info@digikala.com
+    </h6>
+</div>
+<div class="justify-content-center row pt-1 pl-5 pr-5 pb-2" style="background-color:#eceff1">
+    <div class="col-1"><img class="img-fluid" src="https://www.digikala.com/static/files/dd753f51.png" /></div>
+    <div class="col-1"><img class="img-fluid" src="https://www.digikala.com/static/files/f822b108.svg" /></div>
+    <div class="col-1"><img class="img-fluid" src="https://www.digikala.com/static/files/692fd5db.svg" /></div>
+    <div class="col-1"><img class="img-fluid" src="https://www.digikala.com/static/files/c4abfc14.png" /></div>
+</div>
+<div class="justify-content-center row pt-2 pb-2 pr-5 pl-5" style="background-color:#d7dee0">
+    <div class="col-8">
+        <div class="row">
+            <h5 class="float-right">فروشگاه اینترنتی دیجی‌کالا، بررسی، انتخاب و خرید آنلاین</h5>
+        </div>
+        <div class="row">
+            <h6 class="float-right">دیجی‌کالا به عنوان یکی از قدیمی‌ترین فروشگاه های اینترنتی با بیش از یک دهه تجربه، با پایبندی به سه اصل، پرداخت در محل، 7 روز ضمانت بازگشت کالا و تضمین اصل‌بودن کالا موفق شده تا همگام با فروشگاه‌های معتبر جهان، به بزرگ‌ترین فروشگاه اینترنتی ایران تبدیل شود. به محض ورود به سایت دیجی‌کالا با دنیایی از کالا رو به رو می‌شوید! هر آنچه که نیاز دارید و به ذهن شما خطور می‌کند در اینجا پیدا خواهید کرد.</h6>
+        </div>
+        <div class="row">
+            <h6>اسباب بازی   عطر و ادوکلن    تلویزیون    رنگ مو و ابرو   مانتو   لوازم جانبی ماسک تنفسی</h6>
+        </div>
+    </div>
+    <div class="col-1 bg-white">
+        <img class="img-fluid" src="https://www.digikala.com/static/files/1e5dab5a.png" />
+    </div>
+    <div class="col-1 bg-white">
+        <img class="img-fluid" src="https://www.digikala.com/static/files/1e5dab5a.png" />
+    </div>
+    <div class="col-1 bg-white">
+        <img class="img-fluid" src="https://www.digikala.com/static/files/1e5dab5a.png" />
+    </div>
+</div>
+<div class="justify-content-center row pt-2 pb-1" style="background-color:#d7dee0">
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/0ef4e56b.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/a2f19563.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/6b24b899.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/c8cfebe7.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/9ea6b446.svg" /></div>
+    <div class="col-1"><img class="img-fluid p-1" src="https://www.digikala.com/static/files/0feb6326.svg" /></div>
+</div>
+<div class="justify-content-center row pt-2 pb-1 pr-5 pl-5" style="background-color:#d7dee0">
+    <h6>
+        استفاده از مطالب فروشگاه اینترنتی دیجی‌کالا فقط برای مقاصد غیرتجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین دیجی‌کالا) می‌باشد.
+    </h6>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // get previous button
+        let btn_prev = document.querySelector('.controls .prev');
+        // get next button
+        let btn_next = document.querySelector('.controls .next');
+        // get array of images
+        let images = document.querySelectorAll('.photos img');
+        let count = 0;
+
+        // event "click" on previous button
+        btn_prev.addEventListener('click', function () {
+            images[count].className = '';
+            count--;
+
+            if (count < 0) {
+                count = images.length - 1;
+            }
+
+            images[count].className = 'showed';
+        });
+
+        // event "click" on next button
+        btn_next.addEventListener('click', function () {
+            images[count].className = '';
+            count++;
+
+            if (count >= images.length) {
+                count = 0;
+            }
+
+            images[count].className = 'showed';
+        });
+
+
+    }, false);
+</script>
