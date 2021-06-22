@@ -19,6 +19,7 @@ namespace DigikalaUI
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+            //services.AddScoped<IProductRepository, ProductRepository>();
             services.AddAuthentication("CookieAuthentication")
                 .AddCookie("CookieAuthentication", config =>
                 {
@@ -44,7 +45,7 @@ namespace DigikalaUI
                 await next();
                 if (context.Response.StatusCode == 404)
                 {
-                    context.Request.Path = "/Home/Error404";
+                    context.Request.Path = "/customer/authentication/Error404";
                     await next();
                 }
             });

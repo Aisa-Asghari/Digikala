@@ -1,7 +1,210 @@
-﻿
+﻿@model User
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "فروشگاه اينترنتي ديجي كالا";
 }
 
-<h2>Seller Index</h2>
+@section Style{
+    .shadow {
+    box-shadow: 0 5px 5px 0 #ededed, 0 5px 5px 0 #ededed;
+    border-radius: 15px;
+    }
 
+    .txt {
+    font-size: 14px;
+    }
+
+    .photos img {
+    position: absolute;
+    left: 0;
+    border-radius: 10px;
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity .6s ease-in;
+    }
+
+    .photos .showed {
+    opacity: 1;
+    }
+
+    .controls button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 5rem;
+    line-height: 22.5rem;
+    transition: background-color 0.5s linear;
+    box-sizing:border-box;
+    }
+
+    .enter a:hover{
+    color:gray;
+    }
+}
+
+@Html.Partial("_PartialTop")
+
+@Html.Partial("_PartialHead")
+
+@Html.Partial("_PartialNav")
+
+<div class="container-fluid p-5 bg-light">
+    <div class="row mb-3">
+        <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/d49187af1b8db0c87cfb51c43d7ea08e7ead81da_1623670140.jpg" />
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 m-auto">
+            <div class="row">
+                <img class="img img-fluid shadow mb-5" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/ff9eb453354096795f2524fed2bfc9770d230fd4_1613164963.gif">
+            </div>
+            <div class="row">
+                <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/c3904c21e8a3ab13e1beaf014254bf6a6933f3b3_1624041558.jpg">
+            </div>
+        </div>
+        <div class="col-lg-7 col-sm-12 mt-sm-5">
+            <div id="gallery d-flex justify-content-center">
+                <div class="photos ">
+                    <img class="img img-fluid shadow showed" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/0a8f1f4c08feeed721f3add4ad6447445264fac3_1623043467.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/162b06b25d9d61d063f4c82cd02328a6712a30ca_1623953457.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/ee8d869be1be2d4f8b4fd779728100fe8ca68f46_1624080948.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/89fa1ea3a06ab6095affc36665bd665512a40e8b_1624027183.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/bb55edd7bddffc7978476b77da05510cf0b0dba4_1623143328.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/3292dc43aa6df1143292145c26dbf59282d21914_1622033545.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/3292dc43aa6df1143292145c26dbf59282d21914_1622033545.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/cd7c5dbd93f1934bd6bab2b7582193498b688cd4_1623412508.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/290ccbb25f0a21210a69ac269d01404da11ed64d_1624124708.jpg" />
+                    <div class="controls row d-flex justify-content-center p-0">
+                        <button type="button" class="col-6 font-weight-bolder prev text-left text-white p-0"><</button>
+                        <button type="button" class="col-6 font-weight-bolder next text-right text-white p-0">></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid p-5 bg-light">
+    <div class="row mb-3">
+        <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/d49187af1b8db0c87cfb51c43d7ea08e7ead81da_1623670140.jpg" />
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 m-auto">
+            <div class="row">
+                <img class="img img-fluid shadow mb-5" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/ff9eb453354096795f2524fed2bfc9770d230fd4_1613164963.gif">
+            </div>
+            <div class="row">
+                <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/c3904c21e8a3ab13e1beaf014254bf6a6933f3b3_1624041558.jpg">
+            </div>
+        </div>
+        <div class="col-lg-7 col-sm-12 mt-sm-5">
+            <div id="gallery d-flex justify-content-center">
+                <div class="photos ">
+                    <img class="img img-fluid shadow showed" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/0a8f1f4c08feeed721f3add4ad6447445264fac3_1623043467.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/162b06b25d9d61d063f4c82cd02328a6712a30ca_1623953457.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/ee8d869be1be2d4f8b4fd779728100fe8ca68f46_1624080948.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/89fa1ea3a06ab6095affc36665bd665512a40e8b_1624027183.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/bb55edd7bddffc7978476b77da05510cf0b0dba4_1623143328.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/3292dc43aa6df1143292145c26dbf59282d21914_1622033545.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/3292dc43aa6df1143292145c26dbf59282d21914_1622033545.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/cd7c5dbd93f1934bd6bab2b7582193498b688cd4_1623412508.jpg" />
+                    <img class="img img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/290ccbb25f0a21210a69ac269d01404da11ed64d_1624124708.jpg" />
+                    <div class="controls row d-flex justify-content-center p-0">
+                        <button type="button" class="col-6 font-weight-bolder prev text-left text-white p-0"><</button>
+                        <button type="button" class="col-6 font-weight-bolder next text-right text-white p-0">></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row bg-transparent mr-5 ml-5">
+    <div class="col-lg-3 col-sm-6 mb-sm-3 m-lg-0">
+        <div class="card border-0">
+            <a>
+                <img class="img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/4d63d2f3a2d3580ff9b7250614a63948c4998192_1615731689.gif">
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 mb-sm-3 m-lg-0">
+        <div class="card border-0">
+            <a>
+                <img class="img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/1367f5ce8bec4589c3cf3619fbe1479eabf085da_1615977227.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card border-0">
+            <a>
+                <img class="img-fluid shadow" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/8132f41570114115539414c0ee16cf27cb052a25_1615806954.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card border-0">
+            <a>
+                <img class="img-fluid shadow" src="https://dkms.digikala.com/static/files/3ea4f643.jpg">
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row bg-transparent m-5 p-2">
+    <div class="col-lg-6 col-sm-12 mb-sm-5 mb-lg-1">
+        <div class="card border-0">
+            <a>
+                <img class="shadow img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/ab7538b5c9e497a16ac19a650621ffed967e5cce_1615904956.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+        <div class="card border-0">
+            <a>
+                <img class="shadow img-fluid" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/8efcf8d1dd4eb498a5b5ff4a6bfac3041fd30cce_1616277977.jpg">
+            </a>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_PartialFooter")
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // get previous button
+        let btn_prev = document.querySelector('.controls .prev');
+        // get next button
+        let btn_next = document.querySelector('.controls .next');
+        // get array of images
+        let images = document.querySelectorAll('.photos img');
+        let count = 0;
+
+        // event "click" on previous button
+        btn_prev.addEventListener('click', function () {
+            images[count].className = '';
+            count--;
+
+            if (count < 0) {
+                count = images.length - 1;
+            }
+
+            images[count].className = 'showed';
+        });
+
+        // event "click" on next button
+        btn_next.addEventListener('click', function () {
+            images[count].className = '';
+            count++;
+
+            if (count >= images.length) {
+                count = 0;
+            }
+
+            images[count].className = 'showed';
+        });
+
+
+    }, false);
+</script>

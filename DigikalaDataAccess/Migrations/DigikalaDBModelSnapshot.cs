@@ -25,17 +25,35 @@ namespace DigikalaDataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CommentBody");
+                    b.Property<string>("CommentBody")
+                        .IsRequired();
 
-                    b.Property<string>("CommentHead");
-
-                    b.Property<string>("CommentResponse");
+                    b.Property<string>("CommentHead")
+                        .IsRequired();
 
                     b.Property<string>("UserName");
 
                     b.HasKey("CommentID");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("DigikalaDataAccess.Entity.Product", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ProductName")
+                        .IsRequired();
+
+                    b.Property<int>("ProductPrice");
+
+                    b.Property<string>("ProductURL");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("DigikalaDataAccess.User", b =>

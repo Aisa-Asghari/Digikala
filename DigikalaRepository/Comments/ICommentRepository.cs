@@ -11,7 +11,6 @@ namespace DigikalaRepository.Comments
         List<Comment> GetAll();
         List<Comment> GetAllByUser(String userName);
         Comment GetById(int Id);
-        void Update(Comment comment);
 
     }
 }

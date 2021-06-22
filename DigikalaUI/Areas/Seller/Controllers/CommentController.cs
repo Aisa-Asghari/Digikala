@@ -24,19 +24,5 @@ namespace DigikalaUI.Areas.Seller.Controllers
             var model = repository.GetAll();
             return View(model);
         }
-        public IActionResult Reply(int Id)
-        {
-            var model = repository.GetById(Id);
-            return View(model);
-        }
-        [HttpPost]
-        public IActionResult Reply(Comment comment)
-        {
-            if (!ModelState.IsValid)
-                return View();
-
-            repository.Update(comment);
-            return RedirectToAction("Index");
-        }
     }
 }

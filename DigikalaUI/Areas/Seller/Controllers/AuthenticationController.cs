@@ -38,8 +38,6 @@ namespace DigikalaUI.Areas.Seller.Controllers
 
             var result = repository.Login(user.UserName, user.UserPassword);
 
-            var u = user.UserName;
-
             if (result == null)
             {
                 ViewBag.message = "نام کاربری یا رمز عبور صحیح نیست";
@@ -47,7 +45,7 @@ namespace DigikalaUI.Areas.Seller.Controllers
             }
             setCookie(user.UserName, "Seller");
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Indexpv", "Home", result);
         }
         public IActionResult ChangePassword()
         {
@@ -119,7 +117,7 @@ namespace DigikalaUI.Areas.Seller.Controllers
             }
 
             repository.RegisterSeller(user.UserName, user.UserPassword);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Indexpv", "Home");
         }
 
         public IActionResult Logout()

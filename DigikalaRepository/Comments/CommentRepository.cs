@@ -41,16 +41,5 @@ namespace DigikalaRepository.Comments
                 return db.Comments.Where(x => x.CommentID == Id).FirstOrDefault();
             }
         }
-
-        public void Update(Comment comment)
-        {
-            using (var db = new DigikalaDB())
-            {
-                var lastItem = db.Comments.Where(x => x.CommentID == comment.CommentID).FirstOrDefault();
-                lastItem.CommentResponse = comment.CommentResponse;
-                db.Update<Comment>(lastItem);
-                db.SaveChanges();
-            }
-        }
     }
 }

@@ -1,38 +1,57 @@
 ﻿@model List<DigikalaDataAccess.Entity.Comment>
 
-
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+@Html.Partial("_PartialTop")
+
+@Html.Partial("_PartialNav")
 
 @{
     var counter = 1;
 }
 
+@section Style{
+    .button1 {
+    font-size: 1rem;
+    line-height: 25px;
+    font-weight: 700;
+    padding: 12.5px;
+    border-radius: 7.5px;
+    }
 
-<a asp-action="Create" asp-controller="Comment" class="btn btn-primary">Create</a>
-<table class="table">
-    <tr>
-        <th>Id</th>
-        <th>UserName</th>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Response</th>
-    </tr>
+    .input1 {
+    padding: 10px;
+    border-radius: 7.5px;
+    }
 
+    .shadow {
+    box-shadow: 0 5px 5px 0 #ededed, 0 5px 5px 0 #ededed;
+    border-radius: 15px;
+    }
+
+    .txt {
+    font-size: 14px;
+    }
+}
+
+<div class="row mb-5 d-flex justify-content-end ">
+    
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@counter</td>
-            <td>@item.UserName</td>
-            <td>@item.CommentHead</td>
-            <td>@item.CommentBody</td>
-            <td>@item.CommentResponse</td>
-        </tr>
+        <div class="card col-lg-5 col-sm-10 border-danger m-5 float-left">
+            <div class="card-body">
+                <h5 class="card-title">@counter</h5>
+                <h6 class="card-subtitle mb-2 text-danger">@item.UserName</h6>
+                <p class="card-text text-secondary">@item.CommentHead</p>
+                <p class="card-text text-secondary">@item.CommentBody</p>
+            </div>
+        </div>
 
         counter++;
     }
-</table>
 
+</div>
+
+@Html.Partial("_PartialFooter")

@@ -68,11 +68,11 @@ namespace DigikalaRepository.Users
                 db.SaveChanges();
             }
         }
-        public List<User> GetUser(string username)
+        public User GetUser(User user)
         {
             using (var db = new DigikalaDB())
             {
-                return db.Users.Where(x => x.UserName.Equals(username)).ToList();
+                return db.Users.Where(x => x.UserName.Equals(user.UserName)).FirstOrDefault();
             }
         }
 

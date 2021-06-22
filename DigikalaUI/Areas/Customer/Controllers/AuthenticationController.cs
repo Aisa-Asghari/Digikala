@@ -62,7 +62,7 @@ namespace DigikalaUI.Areas.Customer.Controllers
 
             setCookie(user.UserName, "Customer");
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("IndexPV", "Home",result);
         }
         public IActionResult ChangePassword()
         {
@@ -131,7 +131,7 @@ namespace DigikalaUI.Areas.Customer.Controllers
             }
 
             repository.Register(user.UserName, user.UserPassword);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Indexpv", "Home");
         }
 
         public IActionResult Logout()

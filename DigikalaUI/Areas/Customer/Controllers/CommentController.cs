@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using DigikalaDataAccess.Entity;
 using DigikalaRepository.Comments;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigikalaUI.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    [Authorize(Roles = "Customer")]
     public class CommentController : Controller
     {
         private readonly ICommentRepository repository;

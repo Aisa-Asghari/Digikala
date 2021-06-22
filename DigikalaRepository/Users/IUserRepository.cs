@@ -11,7 +11,7 @@ namespace DigikalaRepository.Users
         //forget, change
         void Register(string Username, string Password);
         void RegisterSeller(string Username, string Password);
-        List<User> GetUser(string Username);
+        User GetUser(User user);
         void ChangePassword(User user);
     }
 }
